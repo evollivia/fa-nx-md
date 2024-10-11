@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.service.mariadb.name }}
+spec:
+  selector:
+    app: {{ .Values.service.mariadb.app }}
+  ports:
+    - port: {{ .Values.service.mariadb.port }}
+      protocol: TCP
+      targetPort: {{ .Values.service.mariadb.port }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.service.fastapi.name }}
+spec:
+  selector:
+    app: {{ .Values.service.fastapi.app }}
+  ports:
+    - port: {{ .Values.service.fastapi.port }}
+      protocol: TCP
+      targetPort: {{ .Values.service.fastapi.port }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.service.nginx.name }}
+spec:
+  selector:
+    app: {{ .Values.service.nginx.app }}
+  ports:
+    - port: {{ .Values.service.nginx.port }}
+      protocol: TCP
+      targetPort: {{ .Values.service.nginx.port }}

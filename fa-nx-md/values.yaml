@@ -1,0 +1,42 @@
+# Default values for nginx.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+service:
+  mariadb:
+    name: k8s-mariadb-svc
+    app: helm-mariadb106
+    port: 3306
+  fastapi:
+    name: k8s-fastapi-svc
+    app: helm-fastapi
+    port: 8000
+  nginx:
+    name: helm-fanginx-svc
+    app: helm-fanginx
+    port: 80
+
+deployment:
+  mariadb:
+    name: helm-mariadb106-deploy
+    app: helm-mariadb106
+    image: mariadb
+    tages: 10.6.19-focal
+    port: 3306
+  nginx:
+    name: helm-nginx-deploy
+    app: helm-nginx
+    image: docdker/k8s_fanginx
+    tages: v2
+    port: 80
+  fastapi:
+    name: helm-fastapi-deploy
+    app: helm-fastapi
+    image: docdker/k8s_fastapi
+    tages: v2
+    port: 80
+
+
+
